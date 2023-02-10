@@ -9,7 +9,7 @@ function Signup() {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
 
-  //image upload states
+  //kép feltöltés változók
   const [image, setImage] = useState(null);
   const [uploadingImg, setUploadingImg] = useState(false);
   const [imagePreview, setImagePreview] = useState(null);
@@ -27,13 +27,28 @@ function Signup() {
 async function uploadImage(){
     const data = new FormData();
     data.append('file', image);
-    data.append('upload_preset', 'l7bcejcu');
+    data.append('upload_preset', 'u8zswyfu');
+    try {
+      setUploadingImg(true);
+      let res = await fetch('https://api.cloudinary.com/v1_1/deeeqhoyx/image/upload', {
+        method: 'POST',
+        body: data
+      })
+      const urlData = await res.json();
+      setUploadingImg(false);
+      return urlData.url
+    } catch(error) {
+      setUploadingImg(false)
+      console.log(error);
+    }
 }
 
   async function handleSignup(e) {
     e.preventDefault();
     if(!image) return alert('Kérlek tölts fel egy profilképet!');
     const url = await uploadImage(image);
+    console.log(url);
+    //felhasználó regsiztrálása
   }
 
   return (
@@ -90,7 +105,7 @@ async function uploadImage(){
               />
             </Form.Group>
             <Button variant="primary" type="submit">
-              Felhasználó létrehozása
+              {uploadingImg ? 'Regisztráció folyamatban...' : 'Regisztráció'}
             </Button>
             <div className="py-4">
               <p className="text-center">

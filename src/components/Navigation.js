@@ -16,20 +16,20 @@ function Navigation() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
             <LinkContainer to="/login">
-              <Nav.Link>Login</Nav.Link>
+              <Nav.Link>Bejelentkezés</Nav.Link>
             </LinkContainer>
             <LinkContainer to="/chat">
-              <Nav.Link>Chat</Nav.Link>
+              <Nav.Link>Csevegés</Nav.Link>
             </LinkContainer>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+            <NavDropdown title="Menü" id="basic-nav-dropdown">
+              <NavDropdown.Item href="#action/3.1">Interakció</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
-                Another action
+                Másik interakció
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">Valami</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action/3.4">
-                Separated link
+                Elkülönített Link
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
